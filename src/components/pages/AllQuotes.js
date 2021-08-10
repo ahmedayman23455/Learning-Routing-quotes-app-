@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import useHttp from "../hooks/use-http";
-import QuoteList from "../quotes/QuoteList";
-import LoadingSpinner from "../UI/LoadingSpinner";
-import NoQuotesFound from "../quotes/NoQuotesFound";
+import React, { useEffect, useState } from 'react';
+import useHttp from '../hooks/use-http';
+import QuoteList from '../quotes/QuoteList';
+import LoadingSpinner from '../UI/LoadingSpinner';
+import NoQuotesFound from '../quotes/NoQuotesFound';
 
 const AllQuotes = () => {
   const [quotes, setQuotes] = useState([]);
@@ -23,8 +23,8 @@ const AllQuotes = () => {
     //NOTE: fetchData from firebase
     fetchQuotesF(
       {
-        method: "GET",
-        url: "https://react-http-9f84f-default-rtdb.firebaseio.com/quotes.json",
+        method: 'GET',
+        url: 'https://react-http-9f84f-default-rtdb.firebaseio.com/quotes.json',
       },
       handleDataF
     );
@@ -33,7 +33,7 @@ const AllQuotes = () => {
   if (error) {
     return <p> {error}</p>;
   }
-  if (status === "pending") {
+  if (status === 'pending') {
     return (
       <div className="centered">
         <LoadingSpinner />
@@ -41,7 +41,7 @@ const AllQuotes = () => {
     );
   }
 
-  if (status === "completed" && (!quotes || quotes.length === 0) && !error) {
+  if (status === 'completed' && (!quotes || quotes.length === 0) && !error) {
     return <NoQuotesFound />;
   }
 
